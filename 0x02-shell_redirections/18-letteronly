@@ -1,2 +1,2 @@
 #!/bin/bash
-egrepi ^[ [:alpha:] ]  /etc/ssh/sshd_config
+egrepi ^ [ [:alpha:] ]  /etc/ssh/sshd_config
