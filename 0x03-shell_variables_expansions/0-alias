@@ -1,0 +1,5 @@
+#!/bin/bash
+#Author: Gaitho
+#Description:Create a script that creates an alias Name ls value rm
+#Date: 2/14/2023
+0-alias ls='rm*'
