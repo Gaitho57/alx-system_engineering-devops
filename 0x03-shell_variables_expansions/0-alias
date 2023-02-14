@@ -1,3 +1,5 @@
 #!/bin/bash
-
-alias ls='rm*'
+#Author: Gaitho
+#Date: 2/14/2023
+#Description: Create alias
+alias ls="rm *"
