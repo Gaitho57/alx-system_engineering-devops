@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# A script that prints lines containing the bash word
-# shellcheck disable=SC2009
-$"ps" "faux" | grep "bash"
+# displays PID along with process name of processes having the name 'bash'
+pgrep bash -l
