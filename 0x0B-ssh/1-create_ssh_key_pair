@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# script that creates an RSA key pair
+openssl genpkey -algorithm RSA -out school.pem -aes256 -paramfile rsa-4096.pem -passout pass:betty
+openssl rsa -pubout -in school.pem -out school_public.pem
