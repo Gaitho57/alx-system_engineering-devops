@@ -2,9 +2,10 @@
 ## puppet makes changes to configuration file
 
 file {  'etc/ssh/ssh_config':
-  ensure  => present,
+         ensure  => present,
 
 content =>"
+
   #SSH client configuration
   host*
   IdentifyFile ~/.ssh/school
