@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # ssh setup config file using puppet
 include stdlib
 file_line { 'turn off password authentication':
