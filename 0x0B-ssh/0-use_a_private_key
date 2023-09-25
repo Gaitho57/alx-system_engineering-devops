@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
 # script establishes an SSH connection to the remote server
-# using the private key ~/.ssh/school and the user 'ubuntu'.
 
 ssh ubuntu -i ~/.ssh/school
