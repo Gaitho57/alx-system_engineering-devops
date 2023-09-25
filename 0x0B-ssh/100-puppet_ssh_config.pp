@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# puppet makes changes to configuration file
+# puppet used to make changes to our configuration file
 
-file {  'etc/ssh/ssh_config':
-         ensure  => present,
+file { 'etc/ssh/ssh_config':
+	ensure => present,
 
 content =>"
 
-  #SSH client configuration
-  host*
-  IdentityfyFile ~/.ssh/school
-  passwordAuthentification no
-  ",
+	#SSH client configuration
+	host*
+	IdentityFile ~/.ssh/school
+	passwordAuthentification no
+	",
 }
