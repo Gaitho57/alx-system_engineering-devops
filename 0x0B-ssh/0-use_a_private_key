@@ -3,4 +3,4 @@
 # script establishes an SSH connection to the remote server
 # using the private key ~/.ssh/school and the user 'ubuntu'.
 
-ssh -i ~/.ssh/school -o "StrictHostKeyChecking=no" ubuntu@8.8.8.8
+ssh ubuntu -i ~/.ssh/school
