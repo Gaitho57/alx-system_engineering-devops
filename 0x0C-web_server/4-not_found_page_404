@@ -14,11 +14,6 @@ echo 'Hello World!' | sudo tee /var/www/html/index.html
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 
 # Add configuration for the custom 404 error page
-sudo sed -i '/server_name _;/a \
-    error_page 404 /404.html;\n\
-    location = /404.html {\n\
-        internal;\n\
-    }' /etc/nginx/sites-available/default
-
+sudo sed -i "s@listen 80 default_server;@$(echo $string_error | sed -e 's/[\/&]/\\&/g')@" /etc/nginx/sites-enabled/default
 # Start the Nginx service
 sudo service nginx start
