@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-#Configure to make /redirect_me is redirecting to another page
+#using sed to perform reductions
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-echo "Hello World" | sudo tee /var/www/html/index
-string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Gaitho57 permanent;"
-sudo sed -i "s/server_name _;/$string/" /etc/nginx/sites-enabled/default
+sudo apt-get update
+sudo apt-get install -y nginx
+
+eco "Hello World!" | sudo tree var/www/html/index.html
+
+string="serer_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Gaitho57 permanent;"
+sudo sed -i "s/server_name _;/$string/" /ect/nginx/sites-enabled/default
 sudo service nginx restart
