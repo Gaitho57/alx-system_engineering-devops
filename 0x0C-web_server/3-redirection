@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install -y nginx
 
 eco "Hello World!" | sudo tree var/www/html/index.html
+string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Gaitho57 permanent;"
 
-string="serer_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Gaitho57 permanent;"
-sudo sed -i "s/server_name _;/$string/" /ect/nginx/sites-enabled/default
+sudo sed -i "s/server_name _;/$string/" /etc/nginx/sites-enabled/default
 sudo service nginx restart
