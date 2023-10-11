@@ -1,33 +1,19 @@
 #!/usr/bin/env bash
+# Shows information about subdomains.
 
-domain="$1"
-subdomain="$2"
-
-function get_record_type() {
-    local output=$(dig $1.$2 +short)
-    if [[ $output =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-        echo "A"
-    elif [[ $output =~ ^[0-9a-f:]+:[0-9a-f:]+$ ]]; then
-        echo "AAAA"
-    elif [[ $output =~ ^[0-9A-F:]+$ ]]; then
-        echo "PTR"
-    else
-        echo "Unknown"
-    fi
+domain_information() {
+    local domain="$1"
+    local subdomain="$2"
+    local line
+    line=$(dig "$subdomain"."$domain" | awk '/ANSWER SECTION:/ {getline; print; getline; print}')
+    echo "$subdomain $line" | awk '{printf "The subdomain %s is a %s record and points to %s\n", $1, $2, $3}'
 }
 
-function get_destination() {
-    dig $1.$2 | awk '/ANSWER SECTION:/{getline; print $5}'
-}
-
-if [[ -z "$subdomain" ]]; then
-    subdomains=("www" "lb-01" "web-01" "web-02")
-else
-    subdomains=("$subdomain")
+if [ "$#" -eq 1 ]; then
+    domain_information "$1" "www"
+    domain_information "$1" "lb-01"
+    domain_information "$1" "web-01"
+    domain_information "$1" "web-02"
+elif [ "$#" -eq 2 ]; then
+    domain_information "$1" "$2"
 fi
-
-for sub in ${subdomains[@]}; do
-    record_type=$(get_record_type $sub $domain)
-    destination=$(get_destination $sub $domain)
-    echo "The subdomain $sub is a $record_type record and points to $destination"
-done
