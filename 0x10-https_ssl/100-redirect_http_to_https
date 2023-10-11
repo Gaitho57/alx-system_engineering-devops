@@ -1,0 +1,18 @@
+frontend http-frontend
+    bind *:80
+    mode http
+    redirect scheme https if !{ ssl_fc }
+
+frontend https-frontend
+    bind *:443 ssl crt /etc/letsencrypt/live/www.holberton.online/fullchain.pem
+    reqadd X-Forwarded-Proto:\ https
+    # Add your existing HTTPS frontend configuration here
+
+# Your remaining HAproxy configuration goes here
+# ...
+
+# Example backend server configuration
+backend servers
+    balance roundrobin
+    server web-01 100.26.49.166:80 check
+    server web-02 52.87.215.232:80 check
