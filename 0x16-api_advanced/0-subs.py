@@ -1,19 +1,12 @@
-import requests
+#!/usr/bin/python3
+"""
+main
+"""
+import sys
 
-# Base URL of the API
-base_url = "https://jsonplaceholder.typicode.com"
-
-# GET request to retrieve a list of books
-response = requests.get(f"{base_url}/posts")
-
-# Check if the request was successful (status code 200)
-if response.status_code == 200:
-    # Get the list of books
-    books = response.json()
-
-    # Get the number of books
-    number_of_books = len(books)
-
-    print(f"Number of books: {number_of_books}")
-else:
-    print(f"Error: Unable to retrieve books (Status code: {response.status_code})")
+if __name__ == '__main__':
+    number_of_subscribers = __import__('0-subs').number_of_subscribers
+    if len(sys.argv) < 2:
+        print("Please pass an argument for the subreddit to search.")
+    else:
+        print("{:d}".format(number_of_subscribers(sys.argv[1])))
