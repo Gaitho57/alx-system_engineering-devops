@@ -10,4 +10,7 @@ if __name__ == '__main__':
         print("Please pass an argument for the subreddit to search.")
     else:
         print("{:d}".format(number_of_subscribers(sys.argv[1])))
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ead0557c8075fdbc937c9f0a703268a3dc91f5b
